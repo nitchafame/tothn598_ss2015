@@ -14,7 +14,7 @@ float formOne(float x){
 }
 
 float formTwo(float x){
-	return pow(min(cos(PI* x/2.0),1.0 - abs(x)), 0.5);
+	return pow(min(cos(PI* x/2.0),1.0 - abs(x)), 3.0);
 }
 
 void main() {
@@ -22,18 +22,12 @@ void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy; // normalize
     vec2 mousePos = u_mouse/u_resolution;
 
-	// float y = smoothstep (0.1,0.9,st.x);
-
-	// vec3 color = vec3(y);
-
-	// float pct = F(st,y);
-	//color = (1.0-pct)*color+pct*vec3(1.0,0.0,1.0); 
 	float t = (sin(u_time)+1.0)*0.5;
   
 	float pct = formTwo(st.y);
 
-	vec3 color = vec3(pct *t);
+	vec3 color = vec3(pct);
 
-  gl_FragColor = vec4(color.x, color.y, color.z ,1.0);
+  gl_FragColor = vec4(color.x * t, color.y * t, color.z ,1.0);
  
 }

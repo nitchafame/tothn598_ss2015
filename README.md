@@ -1,5 +1,5 @@
 # tothn598_ss2015
-Creative Coding: [Shader Studio FALL 2015](https://github.com/patriciogonzalezvivo/ss2015)with Patricio Gonzalez Vivo
+Creative Coding : [Shader Studio FALL 2015](https://github.com/patriciogonzalezvivo/ss2015) with Patricio Gonzalez Vivo
 
 Name : Nitcha Tothong (Fame)
 

@@ -2,19 +2,12 @@
 precision mediump float;
 #endif
 
-#define PI 3.14159265
-
 uniform float u_time;
 uniform vec2 u_resolution;
 
 float F(float x, float p, float w){
 	return (smoothstep(p-w * 0.5, p,x) + smoothstep(p+w * 0.5,p,x))-1.0;
 
-}
-
-float motion (float con, float x, float power){
-
-    return pow(cos(PI * x / 5.0), power);
 }
 
 void main() {
@@ -24,16 +17,14 @@ void main() {
   	float t = 2.0;
 
 //speed , 
-	vec2 p = vec2(cos(u_time*7.0),sin(u_time*0.1))* 0.1+0.5 ;
+	vec2 p = vec2(cos(u_time*0.3),sin(u_time*0.9))* 0.1+0.5 ;
 	
-	p.y = motion(0.01, -40.0 * p.x, 5.0)* 0.01+ 0.5;
 
-
-	float pct = F(st.x,p.x,0.3);
-	pct += F(st.y,p.y,0.05);
+	float pct = F(st.x,p.x,0.5);
+	pct += F(st.y,p.y,0.1);
 	
-	color = vec3(step(1.5, pct));
-	gl_FragColor = vec4(color.x*t, color.y, color.z,1.0);
+	color = vec3(step(1.55, pct*1.5));
+	gl_FragColor = vec4(color, 1.0);
   
  
 }

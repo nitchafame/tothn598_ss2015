@@ -29,8 +29,10 @@ void main() {
 	float pct = F(st.x,p.x,0.1);
 	pct += F(st.y,p.y,0.2);
 	
-	color = vec3(smoothstep(0.9, 1.9, pct));
-	gl_FragColor = vec4(color.x*t, color.y, color.z,1.0);
+	//color = vec3(smoothstep(0.9, 1.9, pct));
+	color = vec3(step(1.0, pct * 0.7));
+
+	gl_FragColor = vec4(color, 1.0);
   
  
 }

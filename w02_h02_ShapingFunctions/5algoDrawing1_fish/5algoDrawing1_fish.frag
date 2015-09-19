@@ -12,16 +12,14 @@ float F(float x, float p, float w){
 
 }
 
-float motion (float con, float x, float power){
-
-    return pow(cos(PI * x / 5.0), power);
+float motion (float a, float x, float b){
+    return pow(cos(PI * x / 5.0), b);
 }
 
 void main() {
     
   	vec2 st = gl_FragCoord.xy/u_resolution.xy; // normalize
   	vec3 color = vec3(0.0);
-  	float t = 2.0;
 
 	vec2 p = vec2(cos(u_time*0.5),sin(u_time*0.5))* 0.7 + 0.6;
 	p.x = motion(.8, -30.0 * p.y, 2.0)* 0.02+ 0.5;
@@ -29,9 +27,7 @@ void main() {
 	float pct = F(st.x,p.x,0.1);
 	pct += F(st.y,p.y,0.2);
 	
-	//color = vec3(smoothstep(0.9, 1.9, pct));
 	color = vec3(step(1.0, pct * 0.7));
-
 	gl_FragColor = vec4(color, 1.0);
   
  

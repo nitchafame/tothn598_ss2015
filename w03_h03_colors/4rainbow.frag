@@ -2,8 +2,6 @@
 precision mediump float;
 #endif
 
-#define PI 3.14159265359
-
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
@@ -19,7 +17,8 @@ float plot (vec2 st, float pct){
           smoothstep( pct, pct+0.01, st.y);
 }
 
-// cosine based palette, 4 vec3 params
+// cosine based palette, 4 vec3 params by Iñigo Quílez
+// http://www.iquilezles.org/www/articles/palettes/palettes.htm
 vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
 {
     return a + b*cos( 6.28318*(c*t+d) );
@@ -29,9 +28,8 @@ void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     // shrink size
     st *= 7.0;
-
+    
     vec3 color = palette(st.x,colorA, colorB, colorC, colorE);
-    vec3 pct = vec3(st.y);
 
     // float f = fract(st.y*4.0);
     // color *= 0.4+0.3* sqrt (1.5 * fract (4.0 - f));

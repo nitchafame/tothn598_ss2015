@@ -16,7 +16,7 @@ float plot(vec2 st, float pct){
 
 void main() {
 	vec2 st = gl_FragCoord.xy/u_resolution;
-	//st = st*2.;
+	st = st*3.;
     
     //float y = pow(st.x,5.0);
     //float y = exp(st.x);
@@ -30,13 +30,13 @@ void main() {
     // Smooth interpolation between 0.1 and 0.9
     //float y = smoothstep(0.1,0.9,st.x);
 
-    //float y = sin(st.x);
+    float y = sin(st.x);
 
     vec3 color = vec3(y);
     
     // Plot a line
     float pct = plot(st,y);
-    color = (1.0-pct)*color+pct*vec3(0.0,1.0,0.0);
+    color = (1.0-pct)*color+pct*vec3(1.0,1.0,010);
     
 	gl_FragColor = vec4(color,1.0);
 }

@@ -3,23 +3,28 @@ precision mediump float;
 #endif
 
 uniform vec2 u_resolution;
+uniform vec2 u_mouse;
 uniform float u_time;
 
-// original written by
-// Author @patriciogv - 2015
-// http://patriciogonzalezvivo.com
-
 void main(){
-    vec2 st = gl_FragCoord.xy/u_resolution.xy;
-	float pct = 0.0;
-	st -= 0.5;
-	//pct = distance(vec2(0.5),st);
-	//pct = step(0.5, 1.0 -length(st)*2.0);
-	pct = sqrt(st.x*st.x+st.y*st.y)*2.0;
+  vec2 st = gl_FragCoord.xy/u_resolution.xy;
+  st.x *= u_resolution.x/u_resolution.y;
+  vec3 color = vec3(0.0);
+  float d = 0.0;
 
-	//pct = dot(st,st);
-	//pct = fract(pct* 0.2);
-    
+  // Remap the space to -1. to 1.
+  st = st *2.-1.;
 
-    gl_FragColor = vec4(vec3(pct),1.0);
+  // Make the distance field
+  d = length( abs(st)-.1 );
+  d = length( min(abs(st)-.1,0.) );
+  d = length( max(abs(st)-.1,0.) );
+
+  // Visualize the distance field
+  gl_FragColor = vec4(vec3(fract(d*10.0)),1.0);
+
+  // Drawing with the distance field
+  gl_FragColor = vec4(vec3( step(.8,d) ),1.0);
+  gl_FragColor = vec4(vec3( step(.1,d) * step(d,.8)),1.0);
+  gl_FragColor = vec4(vec3( smoothstep(.3,.4,d)* smoothstep(.6,.5,d)) ,1.0);
 }

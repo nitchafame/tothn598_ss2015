@@ -16,7 +16,6 @@ void main(){
 	//pct = distance(vec2(0.5),st);
 	//pct = step(0.5, 1.0 -length(st)*2.0);
 	pct = sqrt(st.x*st.x+st.y*st.y)*2.0;
-
 	//pct = dot(st,st);
 	//pct = fract(pct* 0.2);
     

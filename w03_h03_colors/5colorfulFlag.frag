@@ -21,6 +21,12 @@ vec3 hsb2rgb( in vec3 c ){
 void main(){
     vec2 st = gl_FragCoord.xy/u_resolution;
     st += 2.0;
+
+    float r = length(st); // radius
+    float a = atan(st.y,st.x)/TWO_PI;
+    a = a*0.5+0.5;
+    st = vec2(a,r);
+
     vec3 color = vec3(0.0);
     color = hsb2rgb(vec3(st.y,1.0,1.0));
 

@@ -29,13 +29,12 @@ void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     // shrink size and position
     st *= 3.0;
-    st.x -= 1.5;
-    st.y -= 1.5;
+    st -= 1.5;
 
     // Round it up
     float r = length(st); // radius
     float a = atan(st.y,st.x)/PI;
-    a = a*0.5+0.5;
+    a = a*0.5 + 0.5;
     st = vec2(a,r);
 
     vec3 color = palette(st.x,colorB, colorD, colorA, colorC);
@@ -43,9 +42,9 @@ void main() {
     // Animate
     //float t = u_time*0.04;
     float t = u_time* 5.0;
-    vec3 pct = vec3(st.y) * t;
+    vec3 pct = vec3(st.x) * t;
     
-    pct.r = smoothstep(3.1,2.0, st.x);
+    pct.r = smoothstep(3.1,2.0, st.y);
     pct.g = clamp(pct.g, 0.1,0.9);
     pct.b = st.y;
 

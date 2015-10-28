@@ -29,7 +29,7 @@ float cross(vec2 st, float size){
 }
 
 float circle(vec2 st, float size) {
-  float pct = 1.0*u_time-length(st/size);
+  float pct = 0.5*u_time-length(st/size);
   return pct = fract(step(0.25, pct)) - step(0.3, pct);
 }
 

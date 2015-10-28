@@ -80,7 +80,7 @@ void main(){
   vec3 final = vec3(0.0);
   vec3 pos = vec3(st,1.0);
   vec3 pct = vec3(st.x);
-  st = st *3.0-1.5;
+  st = st *5.0-2.5;
 
   float d = 0.3;
 
@@ -94,8 +94,8 @@ void main(){
   //d = length( min(abs(st)-.3,0.) )-u_time*0.1 ;
    d = length( max(abs(st)-.05,0.09) )-u_time*0.1 ;
    color = mix(colorA, colorB, pct);
-  // final += fract(d*2.0*color) ;
+   final += fract(d*2.0*color) ;
    draw += circle(pos.xy,0.4) + cross(pos.xy,0.4)*color;
-   final = fract(draw)*u_time;
+   //final = fract(draw)*u_time;
   gl_FragColor = vec4(vec3(fract(final)),1.0);
 }

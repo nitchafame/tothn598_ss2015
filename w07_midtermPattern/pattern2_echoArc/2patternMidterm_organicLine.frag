@@ -65,12 +65,13 @@ void main() {
     // }
     st = brick(st* 2.0);
     vec2 st_f = fract(st);
-    float pct = fractCircles(st_f*pos.xy, d*0.5);
+    float pct = fractCircles(st_f* pos.xy, d*0.5);
 
     //original shape
     //float pct = fractCircles(st, 0.5);
 
     //float pct = inner(st_f,d*.5);
     color += pct;
+    
     gl_FragColor = vec4(color,1.0);
 }

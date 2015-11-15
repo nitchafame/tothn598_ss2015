@@ -1,4 +1,4 @@
-/// Nitcha Tothong - nitchafa.me
+// Author _ Nitcha Tothong (nitchafa.me)
 
 #ifdef GL_ES
 precision mediump float;
@@ -68,18 +68,19 @@ void main() {
 
     float d = distance(st,vec2(0.5));
     d =  1.0-length(max(abs(st-0.5)- 0.9*(cos(random(u_time))*.5),0.1));
-    d =  random(d);
+    d =  random(d)*d;
     
     st *= 5.0;
     st += 0.6;
  
     st = symmetry(st* 1.0);
     st = brick(st* 2.0);
-
     vec2 st_f = fract(st);
+    float rnd = random(st_f)*d;
+
     float pct = innerGradient(st_f,d*1.1);
     color += random(pct);
-    color += pct*vec3(0.9,0.8,0.5);
+    color += pct*vec3(0.9,0.8,0.5*rnd);
     color += pct*vec3(0.9,0.0,0.0);
    // color += random(color);
 

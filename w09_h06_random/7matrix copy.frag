@@ -17,28 +17,34 @@ float random(in vec2 st){
 }
 
 float randomChar(in vec2 outer,in vec2 inner){
-    float grid = 8.0;
+    float grid = 6.0;
     vec2 margin = vec2(0.3,0.1);
     vec2 borders = step(margin,inner)*step(margin,1.-inner);
-    vec2 ipos = floor(inner*grid);
-    vec2 fpos = fract(inner*grid);
-    return step(.5,random(outer*10.+ipos)) * borders.x * borders.y * step(0.07,fpos.x) * step(0.07,fpos.y);
+    return step(0.4,random(outer + floor(inner * grid))) * borders.x * borders.y;
 }
+float triShape(vec2 st, int sides){
+  st = st *2.-1.;
+  int N = sides;
+  float a = atan(st.x,st.y)+PI;
+  float r = TWO_PI/float(N);
+  float d = cos(floor(.5*(abs(u_time)*2.)+a/r)*r-a)*length(st);
+  return step(0.29, d) - step(0.3, d);
 
-vec3 matrix(in vec2 st){
-    float rows = 50.0;
-    vec2 ipos = floor(st*rows)+vec2(1.0,0.0);
-
-    ipos += vec2(0.0,floor(u_time*20.*random(ipos.x)));
-
-    vec2 fpos = fract(st*rows);
-    vec2 center = (0.5-fpos);
-
-    float pct = random(ipos);
-    float glow = (1.0-dot(center,center)*2.0)*2.0;
-
-    return vec3(randomChar(ipos,fpos) * pct * glow);
 }
+// vec3 matrix(in vec2 st){
+//     float rows = 50.0;
+//     vec2 ipos = floor(st*rows)+vec2(1.0,0.0);
+
+//     ipos += vec2(0.0,floor(u_time*20.*random(ipos.x)));
+
+//     vec2 fpos = fract(st*rows);
+//     vec2 center = (0.5-fpos);
+
+//     float pct = random(ipos);
+//     float glow = (1.0-dot(center,center)*2.0)*2.0;
+
+//     return vec3(randomChar(ipos,fpos) * pct * glow);
+// }
 
 void main( ){
 
@@ -49,7 +55,8 @@ void main( ){
 
     //vec2 offset = vec2(0.1,0.0);
 
-    color = vec3(matrix(st));
+    color = vec3(random(vec2(triShape(st,8))));
+
     color.r *= random(floor(st));
     //color.g *= random(floor(st));
     color.b *= random(floor(st));

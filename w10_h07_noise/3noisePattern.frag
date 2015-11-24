@@ -1,5 +1,5 @@
-// Author @patriciogv - 2015
-// http://patriciogonzalezvivo.com
+// Author _ Nitcha Tothong (nitchafa.me)
+
 
 #ifdef GL_ES
 precision mediump float;

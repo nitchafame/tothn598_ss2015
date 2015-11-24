@@ -1,8 +1,8 @@
-// Author @patriciogv - 2015
+// Author _ Nitcha Tothong (nitchafa.me)
+
+// original code by @patriciogv - 2015
 // http://patriciogonzalezvivo.com
 
-// My own port of this processing code by @beesandbombs
-// https://dribbble.com/shots/1696376-Circle-wave
 #ifdef GL_ES
 precision mediump float;
 #endif

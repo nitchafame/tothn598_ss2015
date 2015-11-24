@@ -8,8 +8,8 @@ precision mediump float;
 uniform sampler2D u_tex0;
 uniform vec2 u_tex0Resolution;
 
-int col = 5;
-int row = 4;
+int col = 7 ;
+int row = 3;
 
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;

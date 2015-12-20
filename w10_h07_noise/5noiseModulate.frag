@@ -47,7 +47,7 @@ float shape(vec2 st, float radius) {
     a *= 1.+noise(st+u_time*0.1)*0.1;
     f += sin(a*50.)*noise(st+u_time*.2)*.1;
     f += (sin(a*20.)*.1*pow(m,2.));
-    return 1.-smoothstep(f,f+0.007,r);
+    return 1.0-smoothstep(f,f+0.007,r);
 }
 
 float shapeBorder(vec2 st, float radius, float width) {

@@ -1,5 +1,4 @@
-// Author @patriciogv - 2015
-// http://patriciogonzalezvivo.com
+
 
 #ifdef GL_ES
 precision mediump float;
@@ -13,6 +12,11 @@ uniform vec2 u_tex0Resolution;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
+uniform sampler2D tDiffuse;
+uniform float amount;
+uniform float angle;
+
+varying vec2 vUv;
 
 // Based on Morgan
 // https://www.shadertoy.com/view/4dS3Wd
@@ -41,9 +45,10 @@ float noise (in vec2 st) {
 
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    st += 1.1;
+    float scale = 0.8;
 
-    float scale = 2.0;
-    float offset = 0.5;
+    float offset = 0.2;
     
     float angle = noise( st + u_time * 0.1 )*PI;
     float radius = offset;
@@ -55,4 +60,3 @@ void main () {
 
     gl_FragColor = color;
 }
-

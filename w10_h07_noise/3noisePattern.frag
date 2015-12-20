@@ -54,7 +54,7 @@ void main() {
     pos = rotate2d( noise(pos) ) * pos;
     
     // Draw lines
-    pattern = fractCircles(pos,.05);
+    pattern = fractCircles(pos,0.05);
     //pattern += fractCircles(pos,.15);
 
     gl_FragColor = vec4(vec3(pattern),1.0);

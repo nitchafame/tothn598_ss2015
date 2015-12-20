@@ -24,14 +24,14 @@ void main () {
 
     vec2 offset = vec2(0.0);
 
-    vec2 pos = st-.5;
+    vec2 pos = st-.8 * u_mouse.y/u_resolution.xy;
     float dist = dot(pos,pos);
     offset += dist*.02;
     offset.x = texture2D(u_tex1,st).r*0.02;
-    vec4 color = vec4(1.);
+    vec4 color = vec4(1.0);
     color.r = texture2D(u_tex0,st+offset).r;
-    color.g = texture2D(u_tex0,st+pow(offset,vec2(2.))).g;
-    color.b = texture2D(u_tex0,st+pow(offset,vec2(3.))).b;
+    color.g = texture2D(u_tex0,st+pow(offset,vec2(2.0))).g;
+    color.b = texture2D(u_tex0,st+pow(offset,vec2(3.0))).b;
 
     gl_FragColor = color;
 }

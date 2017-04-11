@@ -23,7 +23,7 @@ vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
 
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    
+
     // Move to - 
     st.x += 0.40*u_time;
     
